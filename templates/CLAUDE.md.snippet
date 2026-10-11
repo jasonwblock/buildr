@@ -1,0 +1,48 @@
+<!-- desktop-sdlc-kit:start (install.sh writes this section; re-running it can replace it. Fill in {{…}} if you copy it by hand.) -->
+## Product
+- App: {{APP_NAME}}
+- Definition: product/definition.md (written by /define or /clone; locked once approved)
+- Roadmap: product/roadmap.md · Backlog: product/backlog.md
+- Stack: {{STACK}}
+
+## Platforms
+- Targets: {{TARGETS}}
+- Dev machine: {{DEV_OS}}
+- Run locally on: {{LOCAL_TARGETS}}
+- Verified only in CI on: {{CI_TARGETS}}
+<!-- An acceptance criterion tagged for an OS that isn't "Run locally on" is proven by the CI matrix (/ship), never by a local run. -->
+
+## Commands
+- Test: `{{TEST_CMD}}`
+- Lint: `{{LINT_CMD}}`
+- Build: `{{BUILD_CMD}}`
+- Start the app (dev): `{{START_CMD}}`
+- E2E (real app): `{{E2E_CMD}}`
+- Screenshot: `{{SCREENSHOT_CMD}}` <!-- <screen-id> [--theme light|dark] [--size WxH] --out <path> -->
+- Package (unsigned, local OS): `{{PACKAGE_CMD}}`
+<!-- TBD means not set yet: /scaffold fills these in. From WSL, Windows-side commands run through scripts/win-run.sh. -->
+
+## Verifying your work
+Run test, lint and build before reporting any task complete, and paste the output. For UI, also run e2e and the screenshots on each local OS.
+If a test fails, fix the code, not the test. Never skip or delete a failing test, and never skip it on one OS.
+Never claim an OS was verified unless the check actually ran on that OS (locally or in CI).
+
+## How work flows here
+- App level: /define or /clone → product/definition.md → /prototype app → /roadmap → /scaffold (R-1).
+- Per feature: work items live in `work/<date>-<slug>/`: intent.md → prototype/ → spec.md → plan.md → verify.md.
+- Prototype: {{PROTOTYPE}}
+- Skills: /define, /clone, /roadmap, /scaffold, /intent, /prototype, /spec, /build, /fix, /ship, /release, /triage.
+- Files listed in `work/*/locks.txt` or `product/locks.txt` were approved by a person; never edit them.
+- Signing certificates, passwords and updater keys live only in CI secrets; never in the repo.
+
+## Issues
+- Tracker: {{TRACKER}}
+- Status updates: {{STATUS_UPDATES}}
+- Triage: {{TRIAGE}}
+<!-- Tracker: linear | jira | github | file:<path> | none. /roadmap sets file:product/backlog.md when it's none.
+     Credentials come from the environment, never this file:
+     Linear LINEAR_API_KEY · Jira JIRA_BASE_URL + JIRA_EMAIL + JIRA_API_TOKEN (or JIRA_PAT) · GitHub the gh CLI -->
+<!-- desktop-sdlc-kit:end -->
+
+## Things Claude gets wrong
+<!-- When the same mistake happens twice, add a one-line rule here. -->
